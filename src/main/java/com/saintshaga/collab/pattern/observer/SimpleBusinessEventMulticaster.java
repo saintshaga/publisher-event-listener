@@ -1,4 +1,4 @@
-package com.worksap.company.collab.pattern.observer;
+package com.saintshaga.collab.pattern.observer;
 
 
 import java.util.*;

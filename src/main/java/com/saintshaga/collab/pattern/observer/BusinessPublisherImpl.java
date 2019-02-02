@@ -1,4 +1,4 @@
-package com.worksap.company.collab.pattern.observer;
+package com.saintshaga.collab.pattern.observer;
 
 /**
  * Created by huang on 19-2-2.
