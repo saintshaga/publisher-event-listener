@@ -1,0 +1,48 @@
+@startuml
+
+class EventObject
+note top of EventObject
+    It's java.util class
+end note
+abstract class BusinessEvent {
+    - long timestamp
+    --Constructor--
+    BusinessEvent(Object source)
+    --method--
+    + long getTimestamp()
+}
+
+EventObject <|-- BusinessEvent
+
+interface EventListener
+note top of EventListener
+    It's java.util class
+end note
+interface BusinessListener<E extends BusinessEvent> {
+    + void onApplicationEvent(E event)
+}
+EventListener <|-- BusinessListener
+
+interface BusinessPublisher{
+    + void publishEvent(BusinessEvent event)
+}
+
+class BusinessPublisherImpl {
+
+}
+
+BusinessPublisher <|-- BusinessPublisherImpl
+
+interface BusinessEventMulticaster {
+    + void addBusinessListener(BusinessListener<?> listener)
+    + void removeBusinessListener(BusinessListener<?> listener)
+    + void removeAllListeners()
+    + void multicastEvent(BusinessEvent event)
+}
+
+class SimpleBusinessEventMulticaster
+
+BusinessEventMulticaster <|-- SimpleBusinessEventMulticaster
+
+BusinessPublisherImpl --> SimpleBusinessEventMulticaster: > use
+@enduml
