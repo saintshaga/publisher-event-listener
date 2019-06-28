@@ -1,6 +1,8 @@
 package com.saintshaga.collab.pattern.observer;
 
 
+import com.google.common.collect.Lists;
+
 import java.util.*;
 import java.util.concurrent.locks.ReadWriteLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
@@ -76,7 +78,7 @@ public class SimpleBusinessEventMulticaster implements BusinessEventMulticaster 
     private Collection<BusinessListener<? extends BusinessEvent>> getAllListeners() {
         try {
             lock.readLock().lock();
-            return this.listeners;
+            return Lists.newArrayList(this.listeners);
         } finally {
             lock.readLock().unlock();
         }
